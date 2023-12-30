@@ -36,6 +36,13 @@ let sizeOfGrid = 9;
 const container = document.querySelector('.container');
 const resetBtn = document.querySelector('button');
 
+const createRandomRGB = () => {
+  const r = Math.floor(Math.random * 256)
+  const g = Math.floor(Math.random * 256)
+  const b = Math.floor(Math.random * 256)
+
+  return {r, g, b}
+}
 
 
 const createGrid = (amtOfGrids) => {
@@ -48,13 +55,15 @@ const createGrid = (amtOfGrids) => {
       row.classList.add('grid-row')
       
       for(let j = 0; j < amtOfGrids; j++) {
-        const widthAndHeight = 960 / amtOfGrids
+        const { r, g, b } = createRandomRGB()
+        console.log('1 ', r, '2 ', g, '3 ', b)
+        const widthAndHeight = 460 / amtOfGrids
         const gridBox = document.createElement('div')
         gridBox.classList.add('grid-box')
         gridBox.style.width = `${widthAndHeight}px`
         gridBox.style.height = `${widthAndHeight}px`
         gridBox.addEventListener('mouseenter', () => {
-          gridBox.style.backgroundColor = 'black';
+        gridBox.style.backgroundColor = 'black';
 
         })
         row.appendChild(gridBox)
