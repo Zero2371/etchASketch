@@ -37,9 +37,9 @@ const container = document.querySelector('.container');
 const resetBtn = document.querySelector('button');
 
 const createRandomRGB = () => {
-  const r = Math.floor(Math.random * 256)
-  const g = Math.floor(Math.random * 256)
-  const b = Math.floor(Math.random * 256)
+  const r = Math.floor(Math.random() * 256)
+  const g = Math.floor(Math.random() * 256)
+  const b = Math.floor(Math.random() * 256)
 
   return {r, g, b}
 }
@@ -62,9 +62,15 @@ const createGrid = (amtOfGrids) => {
         gridBox.classList.add('grid-box')
         gridBox.style.width = `${widthAndHeight}px`
         gridBox.style.height = `${widthAndHeight}px`
-        gridBox.addEventListener('mouseenter', () => {
-        gridBox.style.backgroundColor = 'black';
-
+        gridBox.addEventListener('mouseenter', ()=> {
+          const bgColor = 'rgb(' + r + ',' + g + ',' + b +')';
+          const currentOpacity = gridBox.style.opacity
+        gridBox.style.backgroundColor = `rgb(0, 0, 0)`;
+        if(currentOpacity) {
+          gridBox.style.opacity = Number(currentOpacity) + .1
+        } else {
+          gridBox.style.opacity = .1
+        }
         })
         row.appendChild(gridBox)
       }
