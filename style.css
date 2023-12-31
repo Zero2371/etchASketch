@@ -1,25 +1,27 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: whitesmoke;
+    background: linear-gradient(45deg, aqua, forestgreen);
 }
 .container{
-    display: flex;
-    justify-content: center;
+    margin: 0 auto;
+    height: 75vw;
+    width: 75vw;
     position: relative;
 
 }
 .wrapper{
-    height: 75vw;
-    width: 75vw;
-    justify-content: center;
+
+    margin: 0 auto;
+    box-shadow: 10px 5px 5px grey,
 }
 
 .grid-row{
     display: flex;
+    justify-content: center;
 }
 .grid-box{
     background-color: white;
 
-    border: .1px solid white;
+    border: .1px solid whitesmoke;
 }

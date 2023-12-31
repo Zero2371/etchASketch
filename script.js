@@ -35,6 +35,11 @@ console.log(div);
 let sizeOfGrid = 9;
 const container = document.querySelector('.container');
 const resetBtn = document.querySelector('button');
+const sliderContainer = document.querySelector('#sliderContainer');
+const slider = document.querySelector('#slider');
+const sliderValue =document.querySelector('#sliderValue');
+
+sliderValue.textContent = `${slider.value} x ${slider.value} (resolution) `;
 
 const createRandomRGB = () => {
   const r = Math.floor(Math.random() * 256)
@@ -60,8 +65,7 @@ const createGrid = (amtOfGrids) => {
         const widthAndHeight = 460 / amtOfGrids
         const gridBox = document.createElement('div')
         gridBox.classList.add('grid-box')
-        gridBox.style.width = `${widthAndHeight}px`
-        gridBox.style.height = `${widthAndHeight}px`
+        gridBox.style.width = gridBox.style.height = `${widthAndHeight}px`;
         gridBox.addEventListener('mouseenter', ()=> {
           const bgColor = 'rgb(' + r + ',' + g + ',' + b +')';
           const currentOpacity = gridBox.style.opacity
@@ -92,3 +96,8 @@ resetBtn.addEventListener('click', () => {
     createGrid(userSize)
   }
 })
+function removeGrid() {
+  while (sketchArea.firstChild) {
+    sketchArea.removeChild(sketchArea.firstChild);
+  }
+}
