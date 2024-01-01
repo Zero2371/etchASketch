@@ -15,6 +15,53 @@
   // Step 4: Append the new div to the existing div
  // existingDiv.appendChild(newDiv);
   
+ //NEW CODE
+
+const GRIDSIDE = 600;
+let squaresPerSide = 16;
+
+const sketchArea = document.querySelector('#sketch-area');
+const sliderContainer = document.querySelector('#sliderContainer');
+const slider = document.querySelector('#slider');
+const sliderValue = document.querySelector('#sliderValue');
+
+sliderValue.textContent = `${slider.value} x ${slider.value} Resolution`;
+sketchArea.style.width = sketchArea.style.height = `${GRIDSIDE}px`;
+
+function setBackgroundColor() {
+  this.style.background = "black";
+}
+function createGridCells (squaresPerSide) {
+  const numOfSquares = (squaresPerSide * squaresPerSide);
+  const widthAndHeight = `${(GRIDSIDE / squaresPerSide) - 2}px`;
+
+    for( let i = 0; i < numOfSquares; i++) {
+      const gridCell = document.createElement('div');
+
+      gridCell.style.width = gridCell.style.height = widthAndHeight;
+      gridCell.classList.add("cell");
+
+      sketchArea.appendChild(gridCell);
+      
+      gridCell.addEventListener('mouseover', setBackgroundColor);
+    }
+}
+
+function removeGridCells() {
+  while (sketchArea.firstChild) {
+      sketchArea.removeChild(sketchArea.firstChild);
+  }
+
+}
+
+slider.oninput = function() {
+  let txt = `${this.value} X ${this.value} (Resolution)`;
+  sliderValue.innerHTML = txt;
+  removeGridCells();
+  createGridCells(this.value);
+}
+
+createGridCells(16);
 
 
 
@@ -22,16 +69,50 @@
 
 
 
-/*
-const container = document.querySelector('container');
-const div = document.createElement("div");
-div.style.color = "red";
-div.style.width = "100px";
-div.style.height = "100px";
-div.innerHTML = '<p>this is a box</p>';
-container.appendChild(div);
-console.log(div);
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//    OLD CODE
+
+
+ /*
 let sizeOfGrid = 9;
 const container = document.querySelector('.container');
 const resetBtn = document.querySelector('button');
@@ -39,7 +120,7 @@ const sliderContainer = document.querySelector('#sliderContainer');
 const slider = document.querySelector('#slider');
 let sliderValue =document.querySelector('#sliderValue');
 
-amtOfGrids = slider;
+
 sliderValue.textContent = `${slider.value} x ${slider.value} (resolution) `;
 
 const createRandomRGB = () => {
@@ -103,3 +184,5 @@ function removeGrid() {
     sketchArea.removeChild(sketchArea.firstChild);
   }
 }
+
+*/
