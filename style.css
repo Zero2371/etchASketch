@@ -1,19 +1,58 @@
-body{
+*{
     margin: 0;
     padding: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* MY OLD CODE */
+
+/* body{
     background: linear-gradient(45deg, aqua, forestgreen);
+    background-repeat: no-repeat;
+}
+.resetPage{
+  margin: 0 auto;
 }
 .container{
     margin: 0 auto;
-    height: 75vw;
-    width: 75vw;
-    position: relative;
 
 }
-.wrapper{
-
-    margin: 0 auto;
-    box-shadow: 10px 5px 5px grey,
+.wrapper{ 
+    box-shadow: 10px 10px 10px grey;
+    margin: 100px auto;
 }
 
 .grid-row{
@@ -22,6 +61,30 @@ body{
 }
 .grid-box{
     background-color: white;
-
     border: .1px solid whitesmoke;
 }
+.slider{
+    -webkit-appearance: none;
+    appearance: none;
+    height: 25px;
+    width: 100%;
+    outline: none;
+    -webkit-transition: .2s;;
+
+}
+.slider::-webkit-slider-thumb{
+    -webkit-appearance: none;
+    appearance: none;
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    cursor: pointer;
+}
+#sliderValue{
+    margin: 0 auto;
+    text-align: center;
+}
+#sliderContainer{
+    margin: 0px auto;
+
+}*/

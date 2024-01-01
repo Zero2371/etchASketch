@@ -37,8 +37,9 @@ const container = document.querySelector('.container');
 const resetBtn = document.querySelector('button');
 const sliderContainer = document.querySelector('#sliderContainer');
 const slider = document.querySelector('#slider');
-const sliderValue =document.querySelector('#sliderValue');
+let sliderValue =document.querySelector('#sliderValue');
 
+amtOfGrids = slider;
 sliderValue.textContent = `${slider.value} x ${slider.value} (resolution) `;
 
 const createRandomRGB = () => {
@@ -91,6 +92,7 @@ resetBtn.addEventListener('click', () => {
   const wrapper = document.querySelector('.wrapper')
   if(!wrapper) {
     createGrid(userSize)
+    
   } else {
     wrapper.remove()
     createGrid(userSize)
