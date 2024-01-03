@@ -25,17 +25,67 @@ body{
     width: 200px;
     border: 2px solid black;
     padding: 12px;
+    background-color: rgba(200, 255, 238, 0.726);
   }
 button {
   width: 100%;
-  border: none;
+  border: 1px solid grey;
   border-radius: 15px;
   color: inherit;
   font-family: inherit;
   font-size: inherit;
   cursor: pointer;
   outline: none;
+  padding: 12px;
+  background-color: aqua;
+
 }
+
+button {
+    padding: 10px 20px;
+    border: 1px solid var(--primary-dark);
+    border-radius: 5px;
+  }
+  
+  button.active {
+    background-color: var(--primary-dark);
+    color: var(--primary-light);
+  }
+button,
+input[type='color'] {
+    transition: transform 0.1s ease-in-out;
+  }
+  
+  button:hover,
+  input[type='color']:hover {
+    transform: scale(1.05);
+  }
+  
+  input[type='color']:active {
+    transition: transform 0.05s ease-in-out;
+    transform: scale(1);
+  }
+  
+  input[type='color'] {
+    -webkit-appearance: none;
+    width: 80px;
+    height: 80px;
+    border: none;
+    background-color: rgb(0,0,0,0);
+    cursor: pointer;
+  }
+  
+  input[type='color']::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  
+  input[type='color']::-webkit-color-swatch {
+    border: none;
+    border-radius: 50px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  }
+  
+/* GRID */
 #sketch-area{
     display: flex;
     flex-wrap: wrap;
