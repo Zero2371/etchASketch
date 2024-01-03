@@ -20,10 +20,22 @@
 const GRIDSIDE = 600;
 let squaresPerSide = 16;
 
+function setCurrentColor(newColor) {
+  currentColor = newColor
+}
+function setCurrentMode(newMode) {
+  activateButton(newMode) 
+  currentMode = newMode
+}
+
 const sketchArea = document.querySelector('#sketch-area');
 const sliderContainer = document.querySelector('#sliderContainer');
 const slider = document.querySelector('#slider');
 const sliderValue = document.querySelector('#sliderValue');
+const colorPicker = document.getElementById('colorPicker');
+const colorMode = document.getElementById('colorMode');
+const rgbBtn = document.getElementById('rgbBtn');
+const clearBtn = document.getElementById('clearBtn');
 
 sliderValue.textContent = `${slider.value} x ${slider.value} Resolution`;
 sketchArea.style.width = sketchArea.style.height = `${GRIDSIDE}px`;
@@ -44,6 +56,7 @@ function createGridCells (squaresPerSide) {
       sketchArea.appendChild(gridCell);
       
       gridCell.addEventListener('mouseover', setBackgroundColor);
+    
     }
 }
 
