@@ -2,23 +2,16 @@
 
 
 
-
-// var existingDiv = document.getElementById('existingDiv');
-
-  // Step 2: Create a new div element
- // var newDiv = document.createElement('div');
-
-  // Step 3 (optional): Set properties and content for the new div
- // newDiv.setAttribute('id', 'newDiv');
- // newDiv.innerHTML = '<p>This is the new div.</p>';
-
-  // Step 4: Append the new div to the existing div
- // existingDiv.appendChild(newDiv);
   
  //NEW CODE
 
 const GRIDSIDE = 600;
 let squaresPerSide = 16;
+const DEFAULT_COLOR = '#333333';
+const DEFAULT_MODE = 'color';
+
+let currentColor = DEFAULT_COLOR
+let currentMode = DEFAULT_MODE
 
 function setCurrentColor(newColor) {
   currentColor = newColor
@@ -34,25 +27,33 @@ const slider = document.querySelector('#slider');
 const sliderValue = document.querySelector('#sliderValue');
 const colorPicker = document.getElementById('colorPicker');
 const colorBtn = document.getElementById('colorBtn');
-const colorMode = document.getElementById('colorMode');
 const rgbBtn = document.getElementById('rgbBtn');
+const eraserBtn = document.getElementById('eraserBtn');
 const clearBtn = document.getElementById('clearBtn');
 
 colorPicker.oninput = (e) => setCurrentColor(e.target.value)
 colorBtn.onclick = () => setCurrentMode('color')
-rgbBtn.onclick = () => setCurrentMode('rainbow')
+rgbBtn.onclick = () => setCurrentMode('rgb')
 eraserBtn.onclick = () => setCurrentMode('eraser')
 clearBtn.onclick = () => reloadGrid()
 
 sliderValue.textContent = `${slider.value} x ${slider.value} Resolution`;
 sketchArea.style.width = sketchArea.style.height = `${GRIDSIDE}px`;
 
-// let mouseDown = false
-// document.body.onmousedown = () => (mouseDown = true)
-// document.body.onmouseup = () => (mouseDown = false)
+ let mouseDown = false
+ document.body.onmousedown = () => (mouseDown = true)
+document.body.onmouseup = () => (mouseDown = false)
 
 function setBackgroundColor() {
   this.style.background = "black";
+}
+function reloadGrid() {
+  clearGrid()
+  setupGrid(currentSize)
+}
+
+function clearGrid() {
+  gridCell.innerHTML = ''
 }
 function createGridCells (squaresPerSide) {
   const numOfSquares = (squaresPerSide * squaresPerSide);
@@ -66,9 +67,9 @@ function createGridCells (squaresPerSide) {
 
       sketchArea.appendChild(gridCell);
       
-      // gridCell.addEventListener('mousedown', changeColor);
-      // gridCell.addEventListener('mouseover', changeColor);
-       gridCell.addEventListener('mouseover', setBackgroundColor);
+       gridCell.addEventListener('mousedown', changeColor);
+       gridCell.addEventListener('mouseover', changeColor);
+     //  gridCell.addEventListener('mouseover', setBackgroundColor);
     
     }
 }
@@ -79,43 +80,43 @@ function removeGridCells() {
   }
 
 }
+//function to change grid size
+slider.oninput = function() {
+  let txt = `${this.value} X ${this.value} (Resolution)`;
+  sliderValue.innerHTML = txt;
+  removeGridCells();
+  createGridCells(this.value);
+}
+function changeColor(e) {
+  if (e.type === 'mouseover' && !mouseDown) return
+  if (currentMode === 'rgb') {
+    const randomR = Math.floor(Math.random() * 256)
+    const randomG = Math.floor(Math.random() * 256)
+    const randomB = Math.floor(Math.random() * 256)
+    e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+  } else if (currentMode === 'color') {
+    e.target.style.backgroundColor = currentColor
+  } else if (currentMode === 'eraser') {
+    e.target.style.backgroundColor = '#fefefe'
+  }
+}
+function activateButton(newMode) {
+  if (currentMode === 'rgb') {
+    rgbBtn.classList.remove('active')
+  } else if (currentMode === 'color') {
+    colorBtn.classList.remove('active')
+  } else if (currentMode === 'eraser') {
+    eraserBtn.classList.remove('active')
+  }
 
-//slider.oninput = function() {
-//  let txt = `${this.value} X ${this.value} (Resolution)`;
-//  sliderValue.innerHTML = txt;
-//  removeGridCells();
-//  createGridCells(this.value);
-//}
-//function changeColor(e) {
-//  if (e.type === 'mouseover' && !mouseDown) return
-//  if (currentMode === 'rainbow') {
-//    const randomR = Math.floor(Math.random() * 256)
-//    const randomG = Math.floor(Math.random() * 256)
-//    const randomB = Math.floor(Math.random() * 256)
-//    e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
-//  } else if (currentMode === 'color') {
-//    e.target.style.backgroundColor = currentColor
-//  } else if (currentMode === 'eraser') {
-//    e.target.style.backgroundColor = '#fefefe'
-//  }
-//}
-//function activateButton(newMode) {
-//  if (currentMode === 'rainbow') {
-//    rgbBtn.classList.remove('active')
-//  } else if (currentMode === 'color') {
-//    colorBtn.classList.remove('active')
-//  } else if (currentMode === 'eraser') {
-//    eraserBtn.classList.remove('active')
-//  }
-//
-//  if (newMode === 'rainbow') {
-//    rgbBtn.classList.add('active')
-//  } else if (newMode === 'color') {
-//    colorBtn.classList.add('active')
-//  } else if (newMode === 'eraser') {
-//    eraserBtn.classList.add('active')
-//  }
-//}
+  if (newMode === 'rainbow') {
+    rgbBtn.classList.add('active')
+  } else if (newMode === 'color') {
+    colorBtn.classList.add('active')
+  } else if (newMode === 'eraser') {
+    eraserBtn.classList.add('active')
+  }
+}
 
 createGridCells(16);
 
