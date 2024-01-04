@@ -5,6 +5,11 @@
 body{
     background-color: skyblue;
 }
+.header{
+  text-align: center;
+  margin:  auto;
+  font-size: 24px;
+}
 .main {
     display: flex;
     align-items: center;
@@ -43,12 +48,12 @@ button {
 
 button {
     padding: 10px 20px;
-    border: 1px solid var(--primary-dark);
+    border: 1px solid black;
     border-radius: 5px;
   }
   
   button.active {
-    background-color: var(--primary-dark);
+    background-color: black;
     color: var(--primary-light);
   }
 button,
@@ -90,14 +95,18 @@ input[type='color'] {
     display: flex;
     flex-wrap: wrap;
     background-color: white;
-    margin: 100px auto 0 auto;
+    margin: 80px auto 0 auto;
 }
-
+.grid, h1{
+  text-align: center;
+  font-size: 45px;
+  margin: 0;
+}
 .cell{
     border: 1px solid whitesmoke;
 }
 #sliderContainer {
-    margin: 0 auto;
+    margin: 0 auto 24px;
     text-align: center;
 
 }
