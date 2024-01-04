@@ -33,12 +33,23 @@ const sliderContainer = document.querySelector('#sliderContainer');
 const slider = document.querySelector('#slider');
 const sliderValue = document.querySelector('#sliderValue');
 const colorPicker = document.getElementById('colorPicker');
+const colorBtn = document.getElementById('colorBtn');
 const colorMode = document.getElementById('colorMode');
 const rgbBtn = document.getElementById('rgbBtn');
 const clearBtn = document.getElementById('clearBtn');
 
+colorPicker.oninput = (e) => setCurrentColor(e.target.value)
+colorBtn.onclick = () => setCurrentMode('color')
+rgbBtn.onclick = () => setCurrentMode('rainbow')
+eraserBtn.onclick = () => setCurrentMode('eraser')
+clearBtn.onclick = () => reloadGrid()
+
 sliderValue.textContent = `${slider.value} x ${slider.value} Resolution`;
 sketchArea.style.width = sketchArea.style.height = `${GRIDSIDE}px`;
+
+// let mouseDown = false
+// document.body.onmousedown = () => (mouseDown = true)
+// document.body.onmouseup = () => (mouseDown = false)
 
 function setBackgroundColor() {
   this.style.background = "black";
@@ -55,7 +66,9 @@ function createGridCells (squaresPerSide) {
 
       sketchArea.appendChild(gridCell);
       
-      gridCell.addEventListener('mouseover', setBackgroundColor);
+      // gridCell.addEventListener('mousedown', changeColor);
+      // gridCell.addEventListener('mouseover', changeColor);
+       gridCell.addEventListener('mouseover', setBackgroundColor);
     
     }
 }
@@ -67,12 +80,42 @@ function removeGridCells() {
 
 }
 
-slider.oninput = function() {
-  let txt = `${this.value} X ${this.value} (Resolution)`;
-  sliderValue.innerHTML = txt;
-  removeGridCells();
-  createGridCells(this.value);
-}
+//slider.oninput = function() {
+//  let txt = `${this.value} X ${this.value} (Resolution)`;
+//  sliderValue.innerHTML = txt;
+//  removeGridCells();
+//  createGridCells(this.value);
+//}
+//function changeColor(e) {
+//  if (e.type === 'mouseover' && !mouseDown) return
+//  if (currentMode === 'rainbow') {
+//    const randomR = Math.floor(Math.random() * 256)
+//    const randomG = Math.floor(Math.random() * 256)
+//    const randomB = Math.floor(Math.random() * 256)
+//    e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+//  } else if (currentMode === 'color') {
+//    e.target.style.backgroundColor = currentColor
+//  } else if (currentMode === 'eraser') {
+//    e.target.style.backgroundColor = '#fefefe'
+//  }
+//}
+//function activateButton(newMode) {
+//  if (currentMode === 'rainbow') {
+//    rgbBtn.classList.remove('active')
+//  } else if (currentMode === 'color') {
+//    colorBtn.classList.remove('active')
+//  } else if (currentMode === 'eraser') {
+//    eraserBtn.classList.remove('active')
+//  }
+//
+//  if (newMode === 'rainbow') {
+//    rgbBtn.classList.add('active')
+//  } else if (newMode === 'color') {
+//    colorBtn.classList.add('active')
+//  } else if (newMode === 'eraser') {
+//    eraserBtn.classList.add('active')
+//  }
+//}
 
 createGridCells(16);
 
