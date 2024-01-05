@@ -29,6 +29,7 @@ body{
     gap: 30px;
     width: 200px;
     padding: 12px;
+    height: 740px;
   }
   .colorPan{
     border: 2px solid black;
