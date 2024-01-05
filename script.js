@@ -7,7 +7,7 @@
 
 const GRIDSIDE = 600;
 let squaresPerSide = 16;
-const DEFAULT_COLOR = '#333333';
+const DEFAULT_COLOR = '#00ffff';
 const DEFAULT_MODE = 'color';
 const DEFAULT_SIZE = 16;
 
