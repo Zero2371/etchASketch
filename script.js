@@ -125,7 +125,7 @@ function activateButton(newMode) {
 
 // createGridCells(16);
 window.onload = () => {
-  setupGrid(squaresPerSide)
+  createGridCells(squaresPerSide)
   activateButton(DEFAULT_MODE)
 }
 
