@@ -50,9 +50,6 @@ sketchArea.style.width = sketchArea.style.height = `${GRIDSIDE}px`;
  document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
-//function setBackgroundColor() {
-//  this.style.background = "black";
-//}
 function reloadGrid() {
   clearGrid()
   createGridCells(squaresPerSide)
