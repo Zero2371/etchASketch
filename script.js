@@ -44,12 +44,12 @@ sketchArea.style.width = sketchArea.style.height = `${GRIDSIDE}px`;
  document.body.onmousedown = () => (mouseDown = true)
 document.body.onmouseup = () => (mouseDown = false)
 
-function setBackgroundColor() {
-  this.style.background = "black";
-}
+//function setBackgroundColor() {
+//  this.style.background = "black";
+//}
 function reloadGrid() {
   clearGrid()
-  setupGrid(currentSize)
+  setupGrid(createGridCells)
 }
 
 function clearGrid() {
@@ -64,12 +64,11 @@ function createGridCells (squaresPerSide) {
 
       gridCell.style.width = gridCell.style.height = widthAndHeight;
       gridCell.classList.add("cell");
-
-      sketchArea.appendChild(gridCell);
       
        gridCell.addEventListener('mousedown', changeColor);
        gridCell.addEventListener('mouseover', changeColor);
-     //  gridCell.addEventListener('mouseover', setBackgroundColor);
+       sketchArea.appendChild(gridCell);
+     
     
     }
 }
@@ -109,7 +108,7 @@ function activateButton(newMode) {
     eraserBtn.classList.remove('active')
   }
 
-  if (newMode === 'rainbow') {
+  if (newMode === 'rgb') {
     rgbBtn.classList.add('active')
   } else if (newMode === 'color') {
     colorBtn.classList.add('active')
