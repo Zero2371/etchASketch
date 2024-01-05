@@ -9,9 +9,12 @@ const GRIDSIDE = 600;
 let squaresPerSide = 16;
 const DEFAULT_COLOR = '#333333';
 const DEFAULT_MODE = 'color';
+const DEFAULT_SIZE = 16;
 
 let currentColor = DEFAULT_COLOR
 let currentMode = DEFAULT_MODE
+
+let currentSize = DEFAULT_SIZE
 
 function setCurrentColor(newColor) {
   currentColor = newColor
@@ -19,6 +22,9 @@ function setCurrentColor(newColor) {
 function setCurrentMode(newMode) {
   activateButton(newMode) 
   currentMode = newMode
+}
+function setCurrentSize(newSize) {
+  currentSize = newSize
 }
 
 const sketchArea = document.querySelector('#sketch-area');
@@ -49,11 +55,11 @@ document.body.onmouseup = () => (mouseDown = false)
 //}
 function reloadGrid() {
   clearGrid()
-  setupGrid(createGridCells)
+  createGridCells(squaresPerSide)
 }
 
 function clearGrid() {
-  gridCell.innerHTML = ''
+  sketchArea.innerHTML = ''
 }
 function createGridCells (squaresPerSide) {
   const numOfSquares = (squaresPerSide * squaresPerSide);
@@ -117,7 +123,11 @@ function activateButton(newMode) {
   }
 }
 
-createGridCells(16);
+// createGridCells(16);
+window.onload = () => {
+  setupGrid(squaresPerSide)
+  activateButton(DEFAULT_MODE)
+}
 
 
 
