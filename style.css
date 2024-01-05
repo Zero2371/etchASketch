@@ -53,8 +53,8 @@ button {
   }
   
   button.active {
-    background-color: black;
-    color: var(--primary-light);
+    background-color: black;  
+    color: aqua;
   }
 button,
 input[type='color'] {
